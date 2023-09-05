@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "auto_route_app_scaffold" "\0"
+            VALUE "FileDescription", "flutter_custom_tabs" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "auto_route_app_scaffold" "\0"
+            VALUE "InternalName", "flutter_custom_tabs" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "auto_route_app_scaffold.exe" "\0"
-            VALUE "ProductName", "auto_route_app_scaffold" "\0"
+            VALUE "OriginalFilename", "flutter_custom_tabs.exe" "\0"
+            VALUE "ProductName", "flutter_custom_tabs" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

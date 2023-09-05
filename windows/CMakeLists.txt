@@ -1,10 +1,10 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
-project(auto_route_app_scaffold LANGUAGES CXX)
+project(flutter_custom_tabs LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "auto_route_app_scaffold")
+set(BINARY_NAME "flutter_custom_tabs")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

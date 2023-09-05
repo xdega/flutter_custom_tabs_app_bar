@@ -1,6 +1,6 @@
 {
-    "name": "auto_route_app_scaffold",
-    "short_name": "auto_route_app_scaffold",
+    "name": "flutter_custom_tabs",
+    "short_name": "flutter_custom_tabs",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
