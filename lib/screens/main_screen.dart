@@ -17,25 +17,57 @@ class MainScreen extends StatelessWidget {
       builder: (context, child, tabController) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(
-              context.topRoute.name.replaceAll('Route', ''),
-            ),
+            foregroundColor: Colors.blue,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            shadowColor: Colors.transparent,
+            title: Text(context.topRoute.name.replaceAll('Route', ''),
+                style: const TextStyle(fontWeight: FontWeight.bold)),
             bottom: TabBar(
+              labelColor: Colors.black38,
+              unselectedLabelColor: Colors.black38,
+              indicatorColor: Colors.blue,
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
               controller: tabController,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorWeight: 4,
+              indicator: const RoundedUnderlineDecoration(
+                color: Colors.blue,
+                borderRadius: 10,
+              ),
+              //indicator: const Decoration.boxPainter(),
               // The order of these tabs is aligned with the order in which they
               // appear in the routes property, defined above.
               tabs: const [
                 Tab(
-                  icon: Icon(Icons.home),
-                  text: 'Home',
+                  child: Text(
+                    'Home',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  icon: Icon(Icons.contact_page),
-                  text: 'Contact',
+                  child: Text(
+                    'Contact',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  icon: Icon(Icons.info),
-                  text: 'About',
+                  child: Text(
+                    'About',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -45,6 +77,66 @@ class MainScreen extends StatelessWidget {
           body: child,
         );
       },
+    );
+  }
+}
+
+//TODO: Custom Painters/Decoration (refactor this out later on)
+class _RoundedUnderlinePainter extends BoxPainter {
+  final Color color;
+  final double strokeWidth;
+  final double borderRadius;
+
+  _RoundedUnderlinePainter({
+    required this.color,
+    this.strokeWidth = 2.0,
+    this.borderRadius = 10.0,
+  });
+
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    final Rect rect = offset & configuration.size!;
+    final Paint paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+
+    final double halfStrokeWidth = strokeWidth / 2.0;
+    final double bottomY = rect.bottom; // Align to the bottom
+
+    final Rect roundedRect = Rect.fromLTRB(
+      rect.left + halfStrokeWidth,
+      bottomY - strokeWidth, // Adjusted for alignment
+      rect.right - halfStrokeWidth,
+      bottomY,
+    );
+
+    final RRect rrect = RRect.fromRectAndRadius(
+      roundedRect,
+      Radius.circular(borderRadius),
+    );
+
+    canvas.drawRRect(rrect, paint);
+  }
+}
+
+class RoundedUnderlineDecoration extends Decoration {
+  final Color color;
+  final double strokeWidth;
+  final double borderRadius;
+
+  const RoundedUnderlineDecoration({
+    required this.color,
+    this.strokeWidth = 2.0,
+    this.borderRadius = 10.0,
+  });
+
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _RoundedUnderlinePainter(
+      color: color,
+      strokeWidth: strokeWidth,
+      borderRadius: borderRadius,
     );
   }
 }
